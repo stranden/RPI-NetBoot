@@ -1,0 +1,14 @@
+{
+    "rpi": {
+        "revision": 1,
+        "description": "RPI Hardware inventory",
+        "data": {
+            "e51b1483": {
+                "model": "Raspberry Pi 3 Model B Plus Rev 1.3",
+                "serial": "e51b1483",
+                "wired-mac": "b8:27:eb:1b:14:83",
+                "wireless-mac": "be:f0:4a:14:af:0a"
+            }
+        }
+    }
+}
