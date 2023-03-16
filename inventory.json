@@ -12,7 +12,7 @@
                     "hostname": "e51b1483",
                     "purpose": "ml_screen",
                     "ml_screen": {
-                        "id": "1"
+                        "id": 1
                     }
                 }
             }
