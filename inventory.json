@@ -10,8 +10,8 @@
                 "wireless-mac": "be:f0:4a:14:af:0a",
                 "config": {
                     "hostname": "e51b1483",
-                    "purpose": "mlscreen",
-                    "mlscreen": {
+                    "purpose": "ml-screen",
+                    "ml-screen": {
                         "id": "1"
                     }
                 }
