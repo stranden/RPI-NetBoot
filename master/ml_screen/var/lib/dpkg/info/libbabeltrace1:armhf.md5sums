@@ -1,0 +1,10 @@
+005b6317f12b77a17e1a4636ef95ee2b  usr/lib/arm-linux-gnueabihf/libbabeltrace-ctf-metadata.so.1.0.0
+33ff0e5056f291ee1cb35680d805b6c9  usr/lib/arm-linux-gnueabihf/libbabeltrace-ctf-text.so.1.0.0
+a061d54d792134e37eed230f88193127  usr/lib/arm-linux-gnueabihf/libbabeltrace-ctf.so.1.0.0
+6bc0d50bd169cd0ca02c3aa323fa34e4  usr/lib/arm-linux-gnueabihf/libbabeltrace-dummy.so.1.0.0
+e04b185cb100571875393b6c61b61dfc  usr/lib/arm-linux-gnueabihf/libbabeltrace-lttng-live.so.1.0.0
+f37b8588c9c241470afd67f80693f62b  usr/lib/arm-linux-gnueabihf/libbabeltrace.so.1.0.0
+f97b32872712cbb81a9d24bdbd82a72c  usr/share/doc/libbabeltrace1/changelog.Debian.armhf.gz
+bea88f3d7f47476dc9c58f38f3a4bd8d  usr/share/doc/libbabeltrace1/changelog.Debian.gz
+cdd7d0faf47c3bea922b5a2319408ef4  usr/share/doc/libbabeltrace1/changelog.gz
+41f68ef3fb7b1deb480bd22112eaf0c3  usr/share/doc/libbabeltrace1/copyright

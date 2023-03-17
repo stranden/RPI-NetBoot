@@ -1,0 +1,4 @@
+0bae05e8441ff31d72e02e17bc3831d2  usr/lib/arm-linux-gnueabihf/lapack/liblapack.so.3.9.0
+52335826382f385122be1fa3c0fd3e0a  usr/share/doc/liblapack3/changelog.Debian.gz
+d2a6056c947ba3a337ca7463405a9c3d  usr/share/doc/liblapack3/copyright
+fdf0f0418f059a7a6268705df5c65e21  usr/share/lintian/overrides/liblapack3

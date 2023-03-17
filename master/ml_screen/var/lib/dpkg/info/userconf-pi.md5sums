@@ -1,0 +1,9 @@
+a73e9626201bbca4c36ef74be449fe21  lib/systemd/system/userconfig.service
+bc3a06f033ccb81328afcdc171ff23f9  usr/bin/cancel-rename
+bac13ad5c450d163ce868d00047e658b  usr/bin/rename-user
+839af6566b99694bc6ae5572cbf6820e  usr/lib/userconf-pi/userconf
+69327bfd6bb5590942e42d7e94afcb26  usr/lib/userconf-pi/userconf-service
+5261e32dab179514f661f38eddb33ed0  usr/share/doc/userconf-pi/changelog.gz
+62e58a83023ab13e66c2ab00882449ca  usr/share/doc/userconf-pi/copyright
+59e2bb242bb0994f57d286bd5d4eeea5  usr/share/lintian/overrides/userconf-pi
+995ef422db60f14b97cf6eb24d0387b1  usr/share/userconf-pi/sshd_banner

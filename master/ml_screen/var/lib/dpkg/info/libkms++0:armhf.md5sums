@@ -1,0 +1,5 @@
+5f7ed0fd7e406e5351cebd73012da109  usr/lib/arm-linux-gnueabihf/libkms++.so.0.0.0
+d815bc43be10e24b5f648a23905d4dd8  usr/lib/arm-linux-gnueabihf/libkms++util.so.0.0.0
+3a3f74f5cb97f815a9a5cd23cbb3efbc  usr/share/doc/libkms++0/changelog.Debian.gz
+925ce065b3048ddba8c88dd48c817c5a  usr/share/doc/libkms++0/copyright
+fc6f1d92069383bb7205a9fcaa5bf49c  usr/share/lintian/overrides/libkms++0

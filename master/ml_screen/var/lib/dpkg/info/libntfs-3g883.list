@@ -1,0 +1,12 @@
+/.
+/lib
+/lib/arm-linux-gnueabihf
+/lib/arm-linux-gnueabihf/libntfs-3g.so.883.0.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libntfs-3g883
+/usr/share/doc/libntfs-3g883/changelog.Debian.gz
+/usr/share/doc/libntfs-3g883/changelog.gz
+/usr/share/doc/libntfs-3g883/copyright
+/lib/arm-linux-gnueabihf/libntfs-3g.so.883

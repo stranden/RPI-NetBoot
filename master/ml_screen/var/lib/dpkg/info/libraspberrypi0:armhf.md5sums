@@ -1,0 +1,15 @@
+a16a58b1a3894620ec14424055f2794e  lib/udev/rules.d/10-local-rpi.rules
+911d7bd09bf66db24843719aa5715f0d  usr/lib/arm-linux-gnueabihf/libbcm_host.so.0
+a142b092db57f53a8d8854068572e09f  usr/lib/arm-linux-gnueabihf/libcontainers.so.0
+e59471056b6885da7220618bf2a29548  usr/lib/arm-linux-gnueabihf/libdebug_sym.so.0
+175ff331e7c0ea93dd156911770bcac0  usr/lib/arm-linux-gnueabihf/libdtovl.so.0
+c143bc8fd6ac8c49c1a6bc24e4ce568d  usr/lib/arm-linux-gnueabihf/libmmal.so.0
+9954a7adeadcab767507d27eec94f19b  usr/lib/arm-linux-gnueabihf/libmmal_components.so.0
+2a4cbabbdd0c59e82aa298d171179d4f  usr/lib/arm-linux-gnueabihf/libmmal_core.so.0
+a3c768df9c852564fe8ba2123ebde973  usr/lib/arm-linux-gnueabihf/libmmal_util.so.0
+d2fadb9abcd2fe1b0fd12326f53773b4  usr/lib/arm-linux-gnueabihf/libmmal_vc_client.so.0
+302a2ff0e58f6035295d88d3ae055030  usr/lib/arm-linux-gnueabihf/libvchiq_arm.so.0
+7a633325d36a81cf8d9ca1db36efcefa  usr/lib/arm-linux-gnueabihf/libvcos.so.0
+a7fe7f46f11c1e600856bf3808e85dc7  usr/lib/arm-linux-gnueabihf/libvcsm.so.0
+a3913667da7d2435d26a84c5f64d2053  usr/share/doc/libraspberrypi0/README.md
+058c1519352ea89b64fb00f7207d6278  usr/share/doc/libraspberrypi0/changelog.Debian.gz

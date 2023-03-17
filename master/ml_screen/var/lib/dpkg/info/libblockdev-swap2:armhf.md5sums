@@ -1,0 +1,4 @@
+c4f2ac0e145f0baa49866b7b17bcd6bb  usr/lib/arm-linux-gnueabihf/libbd_swap.so.2.0.0
+223b21191c4fcffa27f57189e7881582  usr/share/doc/libblockdev-swap2/changelog.Debian.gz
+922c155bcf341a506fc85204b120a511  usr/share/doc/libblockdev-swap2/copyright
+e6e4a2eab4c698e10a1b1e9253ee36c0  usr/share/lintian/overrides/libblockdev-swap2
