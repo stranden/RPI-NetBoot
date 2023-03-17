@@ -1,7 +1,0 @@
-667a4bb9f63dcdcdd118f25814f1d6fe  usr/bin/fbtest
-b241c325852c98d5fb6f07b44f0a24f5  usr/bin/kmsblank
-8b15a69fbca4b0d45acd62a7055b9b49  usr/bin/kmsprint
-188565e74f8ba72f59e6550b806ee847  usr/bin/kmstest
-3a3f74f5cb97f815a9a5cd23cbb3efbc  usr/share/doc/kms++-utils/changelog.Debian.gz
-925ce065b3048ddba8c88dd48c817c5a  usr/share/doc/kms++-utils/copyright
-470203adbc2fcb407e4c9ca97ac80452  usr/share/lintian/overrides/kms++-utils

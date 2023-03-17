@@ -1,7 +1,0 @@
-f01161de6cc03248001fe829bcc4835d  usr/lib/arm-linux-gnueabihf/libbrotlicommon.so.1.0.9
-3da1968b9441f25e49b452f7acd717ec  usr/lib/arm-linux-gnueabihf/libbrotlidec.so.1.0.9
-40b3b32547ce572503c6f2eae26b267b  usr/lib/arm-linux-gnueabihf/libbrotlienc.so.1.0.9
-ab476f6e7c77d57f003672aa619cc170  usr/share/doc/libbrotli1/changelog.Debian.armhf.gz
-003eca448c810cd7e9a5d3681a4c37aa  usr/share/doc/libbrotli1/changelog.Debian.gz
-88a64abee92ba0e2810574d815fa4900  usr/share/doc/libbrotli1/copyright
-45a863a88b8a62194767671f7d666eab  usr/share/lintian/overrides/libbrotli1

@@ -1,3 +1,0 @@
-no-manual-page usr/bin/bthelper
-no-manual-page usr/bin/btuart
-systemd-service-file-refers-to-unusual-wantedby-target lib/systemd/system/hciuart.service dev-serial1.device

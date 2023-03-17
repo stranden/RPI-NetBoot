@@ -1,5 +1,0 @@
-auto eth0.200
-iface eth0.200 inet static
-        address 10.91.1.2
-        netmask 255.255.248.0
-        network 10.90.0.0

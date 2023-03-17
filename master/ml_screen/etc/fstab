@@ -1,3 +1,0 @@
-proc            /proc           proc    defaults          0       0
-# a swapfile is not a swap partition, no line here
-#   use  dphys-swapfile swap[on|off]  for that

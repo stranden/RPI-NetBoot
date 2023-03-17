@@ -1,5 +1,0 @@
-d54a0bf1b70d613518344ac94f0e5758  usr/bin/arm-linux-gnueabihf-g++-10
-d87f5309cedbb2e5f338f21eb07898c6  usr/lib/gcc/arm-linux-gnueabihf/10/cc1plus
-d34e924e0b649f39a4c876c1a4ec4e1f  usr/share/doc/gcc-10-base/C++/README.C++
-f2d45a3ce3cdd0505b26a13edecf886c  usr/share/doc/gcc-10-base/C++/changelog.gz
-579094036f62b003eb88423da97b75b4  usr/share/lintian/overrides/g++-10
