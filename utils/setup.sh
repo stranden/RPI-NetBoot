@@ -72,8 +72,6 @@ then
         then
             echo "[SUCCESS] Everything is looking good!"
         fi
-    else
-        echo "[INFO] Terminating flight check - you are on your own!"
     fi
 else
     echo "[INFO] Terminating flight check - you are on your own!"
