@@ -1,5 +1,4 @@
 #!/bin/bash
-#
 
 check_inventory($serial) {
     inventorySerialArray=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data" | jq 'keys[]' | cut -d "\"" -f 2`
