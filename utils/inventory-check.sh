@@ -1,7 +1,7 @@
 #!/bin/bash
 
 check_inventory() {
-    $serial=$1
+    serial=$1
     inventorySerialArray=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data" | jq 'keys[]' | cut -d "\"" -f 2`
     if [[ "${inventorySerialArray[*]}" =~ "${serial}" ]];
     then
@@ -14,7 +14,7 @@ check_inventory() {
 }
 
 check_hostname() {
-    $serial=$1
+    serial=$1
     getHostname=$(hostname)
     inventoryHostname=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.hostname"`
     if [[ $getHostname == $inventoryHostname ]];
@@ -31,7 +31,7 @@ check_hostname() {
 }
 
 check_purpose() {
-    $serial=$1
+    serial=$1
     inventoryPurpose=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.purpose"`
     if [[ $inventoryPurpose == "ml_screen" ]];
     then
@@ -72,6 +72,8 @@ then
         then
             echo "[SUCCESS] Everything is looking good!"
         fi
+    else
+        echo "[INFO] Terminating flight check - you are on your own!"
     fi
 else
     echo "[INFO] Terminating flight check - you are on your own!"
