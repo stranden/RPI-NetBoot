@@ -38,6 +38,7 @@ check_purpose() {
         inventoryMLScreenID=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.ml_screen.id"`
         inventoryMLScreenIP="10.91.1.$inventoryMLScreenID"
         systemIP=$(hostname -I)
+        mgmtIP=$(echo $systemIP | cut -d " " -f 1)
         mlScreenIP=$(echo $systemIP | cut -d " " -f 2)
         mlScreenOctet=$(echo $mlScreenIP | cut -d "." -f 4)
         mlTargetIP=$(echo $mlScreenIP | sed -e "s/\.1.$mlScreenOctet/.0.$mlScreenOctet/")
@@ -46,7 +47,8 @@ check_purpose() {
 
         if [[ $inventoryMLScreenIP == $mlScreenIP ]];
         then
-            echo "[SUCCESS] MEGALINK Screen IP $mlScreenIP - MEGALINK Target IP must be $mlTargetIP"
+            echo "[INFO] Raspberry PI Managment IP $mgmtIP"
+            echo "[INFO] MEGALINK Screen IP $mlScreenIP - MEGALINK Target IP must be $mlTargetIP"
             return 0
         else
             echo "[FAILED] MEGALINK Screen IP is $mlScreenIP it should have been $inventoryMLScreenIP"
