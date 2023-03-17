@@ -1,6 +1,7 @@
 #!/bin/bash
 
-check_inventory($serial) {
+check_inventory() {
+    $serial=$1
     inventorySerialArray=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data" | jq 'keys[]' | cut -d "\"" -f 2`
     if [[ "${inventorySerialArray[*]}" =~ "${serial}" ]];
     then
@@ -12,7 +13,8 @@ check_inventory($serial) {
     fi
 }
 
-check_hostname($serial) {
+check_hostname() {
+    $serial=$1
     getHostname=$(hostname)
     inventoryHostname=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.hostname"`
     if [[ $getHostname == $inventoryHostname ]];
@@ -28,7 +30,8 @@ check_hostname($serial) {
     fi
 }
 
-check_purpose($serial) {
+check_purpose() {
+    $serial=$1
     inventoryPurpose=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.purpose"`
     if [[ $inventoryPurpose == "ml_screen" ]];
     then
@@ -58,13 +61,13 @@ check_purpose($serial) {
 
 getSerial=`cat /proc/cpuinfo | grep Serial | cut -d ':' -f 2 | sed -e 's/^[ \t]*//' | sed -E 's/.*(.{8})$/\1/'`
 
-check_inventory($getSerial)
+check_inventory $getSerial
 if [[ "$?" -eq 0 ]];
 then
-    check_hostname($getSerial)
+    check_hostname $getSerial
     if [[ "$?" -eq 0 ]];
     then
-        check_purpose($getSerial)
+        check_purpose $getSerial
         if [[ "$?" -eq 0 ]];
         then
             echo "[SUCCESS] Everything is looking good!"
