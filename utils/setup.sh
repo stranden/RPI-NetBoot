@@ -16,29 +16,29 @@ check_inventory() {
 check_hostname() {
     serial=$1
     getHostname=$(hostname)
-    inventoryHostname=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.hostname"`
+    inventoryHostname=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.hostname" | cut -d "\"" -f 2`
     if [[ $getHostname == $inventoryHostname ]];
     then
         echo "[SUCCESS] Hostname is set correct"
         return 0
     else
-        echo "[FAILED] Hostname needs to be configured to: $inventoryHostname"
+	echo "[FAILED] Hostname needs to be configured to: $inventoryHostname"
+	echo "[INFO] Trying to set hostname correctly"
         sed -i "s/$getHostname/$inventoryHostname/g" /etc/hostname
         sed -i "s/$getHostname/$inventoryHostname/g" /etc/hosts
-        #reboot
-        return 1
+        reboot
     fi
 }
 
 check_purpose() {
     serial=$1
-    inventoryPurpose=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.purpose"`
+    inventoryPurpose=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.purpose" | cut -d "\"" -f 2`
     if [[ $inventoryPurpose == "ml_screen" ]];
     then
         inventoryMLScreenID=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.ml_screen.id"`
         inventoryMLScreenIP="10.91.1.$inventoryMLScreenID"
         systemIP=$(hostname -I)
-        mgmtIP=$(echo $systemIP | cut -d " " -f 1)
+	mgmtIP=$(echo $systemIP | cut -d " " -f 1)
         mlScreenIP=$(echo $systemIP | cut -d " " -f 2)
         mlScreenOctet=$(echo $mlScreenIP | cut -d "." -f 4)
         mlTargetIP=$(echo $mlScreenIP | sed -e "s/\.1.$mlScreenOctet/.0.$mlScreenOctet/")
@@ -47,14 +47,15 @@ check_purpose() {
 
         if [[ $inventoryMLScreenIP == $mlScreenIP ]];
         then
-            echo "[INFO] Raspberry PI Managment IP $mgmtIP"
-            echo "[INFO] MEGALINK Screen IP $mlScreenIP - MEGALINK Target IP must be $mlTargetIP"
+	    echo "[INFO] Raspberry PI Management IP $mgmtIP"
+            echo "[INFO] MEGALINK Screen IP $mlScreenIP"
+	    echo "[INFO] MEGALINK Target IP must be $mlTargetIP"
             return 0
         else
             echo "[FAILED] MEGALINK Screen IP is $mlScreenIP it should have been $inventoryMLScreenIP"
+            echo "[INFO] Trying to set MEGALINK Screen IP correctly"
             sed -i "s/$mlScreenIP/$inventoryMLScreenIP/g" /etc/network/interfaces.d/eth0
-            #reboot
-            return 1
+            reboot
         fi
         
     fi
