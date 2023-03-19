@@ -1,5 +1,6 @@
 # RPI-NetBoot
-**Repository used for managing, configuring and booting Raspberry PI's via the network**
+**Repository used for managing, configuring and booting Raspberry PI's via the network** 
+
 First we use the [inventory.json](https://github.com/stranden/RPI-NetBoot/blob/master/inventory.json) file as the inventory for all PI's.
 
 The serial number from each PI is used as the key when a PI check if it's managed by the repository or not.
