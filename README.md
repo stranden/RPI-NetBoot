@@ -23,6 +23,8 @@ If the check turns out to be true, then it will look under the config section. T
 ```
 > NOTE: The "value" of the "purpose" key, will ALWAYS be a new key!
 
+
+## Raspberry PI server setup
 **But before the PI will be able to check if it is managed, it needs to be booted. Therefore we need three diffierent services on the network:**
 - DHCP server which will hand out the following options:
     - next-server <IP> of the TFTP server e.g. 172.20.60.50
@@ -37,7 +39,7 @@ I have installed all services on the same server based on the newest Debian net-
 $ sudo apt install isc-dhcp-server tftpd-hpa nfs-kernel-server
 ```
 
-**isc-dhcp-server configuration:**
+### isc-dhcp-server configuration ###
 We need to define the interface where the dhcp server should listen, otherwise it will not start.
 That specific configuration is defined in `/etc/default/isc-dhcp-server` and change the `INTERFACESv4` to the correct interface
 ```sh
@@ -78,7 +80,7 @@ host pi-ec6be72b {
 }
 ```
 
-**tftp-hpa configuration:**
+### tftp-hpa configuration ###
 The configuration for the TFTP server is much more simple than the DHCP
 In order to configure the service, we need to take a look at `/etc/default/tftpd-hpa`.
 `TFTP_DIRECTORY` need to be configured to the decired directory and `--verbose` should be added to ``
@@ -91,7 +93,7 @@ TFTP_ADDRESS=":69"
 TFTP_OPTIONS="--secure --verbose"
 ```
 
-**nfs-kernel-server configuration:**
+### nfs-kernel-server configuration ###
 Last but not least we need to configure the NFS server, which will be the one handling all the storage for all PI's
 All configuration are done under `/etc/exports` which defines the targets, we are using NFSv3.
 For each PI there needs to at least two shares, one for the root filesystem and one for the /boot filesystem.
