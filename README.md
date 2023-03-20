@@ -71,7 +71,9 @@ subnet 172.20.20.0 netmask 255.255.255.0 {
 ```
 
 We can also define a static lease for the PI, so it always will recieve the same DHCP address. Thats quite nice for management.
+
 *NB: This should be built into the inventory, so a bash script scheduled with crontab can create these fixed addresses* 
+
 ```sh
 host pi-ec6be72b {
   hardware ethernet b8:27:eb:6b:e7:2b;
@@ -98,43 +100,57 @@ Last but not least we need to configure the NFS server, which will be the one ha
 All configuration are done under `/etc/exports` which defines the targets, we are using NFSv3.
 For each PI there needs to at least two shares, one for the root filesystem and one for the /boot filesystem.
 The root filesytems are located under the **nfs** folder and the /boot filesystems are located under the **tftp** folder
+
 *NB: This should also be integrated with the inventory, so there will be a bash script that will create and update all the NFS targets. It should be scheduled via crontab.*
+
 ```sh
 /srv/rpi/nfs/ec6be72b/ml_screen *(rw,sync,insecure,no_subtree_check,no_root_squash)
 /srv/rpi/tftp/ec6be72b *(rw,sync,insecure,no_subtree_check,no_root_squash)
 ```
 
-### Old documentation
-Boot a Raspberry Pi from the network via TFTP and mounting /boot and /root from a NFS server
+## Raspberry PI configuration
+**Every PI needs some aditional configuration in order to be able to boot of the Network**
 
-NFS export targets /etc/exports
-
-
-In order to boot a Raspberry Pi off the network. There are some constrains which needs to be forfilled.
+This is table shows the different models, each model have different requirements in order to be able to boot
 
 | Raspberry Pi model    | Able to network boot                  |
 | --------------------- | ------------------------------------- |
-| Raspberry Pi 1        | Yes - Needs SD-card with bootcode.bin |
-| Raspberry Pi 2        | Yes - Needs SD-card with bootcode.bin |
-| Raspberry Pi 3B       | Yes - Needs SD-card with bootcode.bin |
-| Raspberry Pi 3B+      | Yes |
-| Raspberry Pi 4        | Yes |
+| Raspberry Pi 1        | Requires a FAT32 SD-card with bootcode.bin |
+| Raspberry Pi 2        | Requires a FAT32 SD-card with bootcode.bin |
+| Raspberry Pi 3B       | Requires a FAT32 SD-card with bootcode.bin |
+| Raspberry Pi 3B+      | Working out of box |
+| Raspberry Pi 4        | Needs a new EEPROM bootloader |
 
-For Raspberry Pi models 1, 2 and 3B there are some steps in order to boot off the network
+
+### Raspberry Pi Model 1, 2 and 3B
+For those models there are some steps in order to boot off the network
 They all need to boot from the USB which includes the PXE boot
 
 Append `program_usb_boot_mode=1` to `/boot/config.txt``
-```
+```sh
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
 
 Reboot the PI and check if it worked as it should with `vcgencmd otp_dump | grep 17:`
-```
+```sh
 pi@raspberrypi:~ $ vcgencmd otp_dump | grep 17:
 17:3020000a
 ```
 The output should say `3020000a` then it has worked
 
+All three models need a FAT32 formated SD-card inserted with `bootcode.bin`
+
+### Raspberry Pi Model 3B+
+This model should work out of the box, but otherwise do the same as Model 1, 2 and 3B.
+But it doesn't need a SD-card.
+
+### Raspberry Pi Model 4
+For the Raspberry Pi 4 it needs a need EEPROM bootloader.
+It can be installed via the `Raspberry Pi Imager` which can be downloaded from the [Official Raspberry Pi](https://www.raspberrypi.com/software/) website
+
+
+## Individual images for different purposes
+**We have some different images for the different purposes in the inventory file**
 
 ### Configuration of ML_SCREEN
 
@@ -164,7 +180,7 @@ openbox --config-file /home/pi/.config/openbox/bare.xml
 
 
 
-### Nice things
+## Nice things which we need to use in scripts
 
 
 Grep the Model from a RPI
