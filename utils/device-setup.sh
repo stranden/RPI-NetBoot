@@ -2,7 +2,7 @@
 
 check_inventory() {
     serial=$1
-    inventorySerialArray=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data" | jq 'keys[]' | cut -d "\"" -f 2`
+    inventorySerialArray=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq -r '.rpi.data' | jq 'keys[]' | cut -d "\"" -f 2`
     if [[ "${inventorySerialArray[*]}" =~ "${serial}" ]];
     then
         echo "[SUCCESS] Inventory contains $serial"
@@ -16,7 +16,7 @@ check_inventory() {
 check_hostname() {
     serial=$1
     getHostname=$(hostname)
-    inventoryHostname=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.hostname" | cut -d "\"" -f 2`
+    inventoryHostname=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq -r '.rpi.data."'$serial'".config.hostname'`
     if [[ $getHostname == $inventoryHostname ]];
     then
         echo "[SUCCESS] Hostname is set correct"
@@ -32,13 +32,13 @@ check_hostname() {
 
 check_purpose() {
     serial=$1
-    inventoryPurpose=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.purpose" | cut -d "\"" -f 2`
+    inventoryPurpose=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq -r '.rpi.data."'$serial'".config.purpose'`
     if [[ $inventoryPurpose == "ml_screen" ]];
     then
-        inventoryMLScreenID=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq ".rpi.data.$serial.config.ml_screen.id"`
+        inventoryMLScreenID=`curl -s https://raw.githubusercontent.com/stranden/RPI-NetBoot/master/inventory.json | jq -r '.rpi.data."'$serial'".config.ml_screen.id'`
         inventoryMLScreenIP="10.91.1.$inventoryMLScreenID"
         systemIP=$(hostname -I)
-	mgmtIP=$(echo $systemIP | cut -d " " -f 1)
+	    mgmtIP=$(echo $systemIP | cut -d " " -f 1)
         mlScreenIP=$(echo $systemIP | cut -d " " -f 2)
         mlScreenOctet=$(echo $mlScreenIP | cut -d "." -f 4)
         mlTargetIP=$(echo $mlScreenIP | sed -e "s/\.1.$mlScreenOctet/.0.$mlScreenOctet/")
@@ -47,9 +47,9 @@ check_purpose() {
 
         if [[ $inventoryMLScreenIP == $mlScreenIP ]];
         then
-	    echo "[INFO] Raspberry PI Management IP $mgmtIP"
+	        echo "[INFO] Raspberry PI Management IP $mgmtIP"
             echo "[INFO] MEGALINK Screen IP $mlScreenIP"
-	    echo "[INFO] MEGALINK Target IP must be $mlTargetIP"
+	        echo "[INFO] MEGALINK Target IP must be $mlTargetIP"
             return 0
         else
             echo "[FAILED] MEGALINK Screen IP is $mlScreenIP it should have been $inventoryMLScreenIP"
